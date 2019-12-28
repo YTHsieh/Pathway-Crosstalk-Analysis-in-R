@@ -16,7 +16,7 @@ NON=matrix(nrow=10,ncol=7)
 NON[,1:6]=as.matrix(target[,1:6])
 NON[,7]=as.matrix(pathway[,2584])     #重新計算pathway內的gene數(此部分運用了excel)
 colnames(NON)=c("pathway.id","pathway","n.genes.in.pw","n.sex.related.genes.in.pw","p-value","p-value_BH_correction","exact.genes.NUM")
-outfile=paste(datdir,"papaya_NODE.txt", sep="");outfile	
+outfile=paste(datdir,"A組_NODE.txt", sep="");outfile	
 write.table(NON,file=outfile, sep="\t",quote = F,row.names = F,col.names = T)	
 
 ##------------------------------------
@@ -48,7 +48,7 @@ for (i in 1:10){
 colnames(BIG)=c("Pathway1","Pathway2","Intersect","Union","Length(Ai)","Length(Ak)")    
 ###此步驟結束後，crosstalk分析做完(但未計算JC、OC值)
 
-outfile=paste(datdir,"papaya_crosstalk.txt", sep="");outfile	
+outfile=paste(datdir,"A組_crosstalk.txt", sep="");outfile	
 write.table(BIG,file=outfile, sep="\t",quote = F,row.names = F,col.names = T)	#儲存階段檔。
 
 #計算JC值
@@ -65,7 +65,7 @@ for ( i in 1:100){
 		BIGG[i,8]=as.numeric(BIGG[i,3])/MIN	
 		}
 BIGG[,8]=round(as.numeric(BIGG[,8]),digits = 3)		
-outfile=paste(datdir,"papaya_crosstalk(full).txt", sep="");outfile	
+outfile=paste(datdir,"A組_crosstalk(full).txt", sep="");outfile	
 write.table(BIGG,file=outfile, sep="\t",quote = F,row.names = F,col.names = T)	 #儲存階段檔。
 			
 			
@@ -83,7 +83,7 @@ for (i in 1:90){
 	}
 MIno2=unique(MIno);MIno2
 BIGGGG=MINUS[-MIno2,]
-outfile=paste(datdir,"papaya_crosstalk(full-unique).txt", sep="");outfile	
+outfile=paste(datdir,"A組_crosstalk(full-unique).txt", sep="");outfile	
 write.table(BIGGGG,file=outfile, sep="\t",quote = F,row.names = F,col.names = T)	
 			
 #完成全部參數計算。
